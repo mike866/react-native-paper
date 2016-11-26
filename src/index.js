@@ -6,6 +6,7 @@ export { default as PortalHost } from './core/PortalHost';
 
 export * as Colors from './styles/colors';
 
+export { default as BottomSheet } from './components/BottomSheet';
 export { default as Button } from './components/Button';
 export { default as Card } from './components/Card';
 export { default as Checkbox } from './components/Checkbox';

@@ -11,7 +11,7 @@ import {
   NavigationProvider,
   StackNavigation,
 } from '@exponent/ex-navigation';
-import { Colors, ThemeProvider, Drawer } from 'react-native-paper';
+import { Colors, ThemeProvider, PortalHost, Drawer } from 'react-native-paper';
 import Router from './src/Router';
 
 
@@ -54,25 +54,27 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider>
-        <NavigationProvider router={Router}>
-          <Drawer
-            onOpen={this._handleOpenDrawer}
-            onClose={this._handleCloseDrawer}
-            open={this.state.open}
-            content={this._renderDrawerItems()}
-          >
-            <StackNavigation
-              defaultRouteConfig={{
-                navigationBar: {
-                  title: 'Examples',
-                  tintColor: Colors.white,
-                  backgroundColor: Colors.indigo500,
-                },
-              }}
-              initialRoute={Router.getRoute('home')}
-            />
-          </Drawer>
-        </NavigationProvider>
+        <PortalHost>
+          <NavigationProvider router={Router}>
+            <Drawer
+              onOpen={this._handleOpenDrawer}
+              onClose={this._handleCloseDrawer}
+              open={this.state.open}
+              content={this._renderDrawerItems()}
+            >
+              <StackNavigation
+                defaultRouteConfig={{
+                  navigationBar: {
+                    title: 'Examples',
+                    tintColor: Colors.white,
+                    backgroundColor: Colors.indigo500,
+                  },
+                }}
+                initialRoute={Router.getRoute('home')}
+              />
+            </Drawer>
+          </NavigationProvider>
+        </PortalHost>
       </ThemeProvider>
     );
   }
